@@ -119,3 +119,10 @@ gem "gretel"
 # bootstrapのgemインストール
 gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
+
+# AWS関連
+gem 'aws-sdk-rails', '~> 2'
+gem 'aws-sdk-s3', '~> 1'
+
+# 認可関係
+gem "pundit"
