@@ -1,0 +1,21 @@
+.main
+  .main__content.card-deck
+    - (1..4).each do
+      .main__content__item.card
+        .main__content__item__header.card-header
+          %span.main__content__item__header__type="EC2"
+          %span.main__content__item__header__name="test"
+          %span.main__content__item__header__ip="1.1.1.1"
+          %span.main__content__item__header__state="up"
+        .main__content__item__body.card-body
+          .main__content__item__body
+            %label.main__content__item__body__key="インスタンスタイプ"
+            %span.main__content__item__body__value="t2.small"
+        .main__content__item__footer.card-footer
+          .main__content__item__footer__btn-group
+            %a.btn.btn-primary{href: "#"} 起動
+            %a.btn.btn-primary{href: "#"} 停止
+            %a.btn.btn-primary{href: "#"} 再起動
+            %a.btn.btn-primary{href: "#"} 詳細
+
+        

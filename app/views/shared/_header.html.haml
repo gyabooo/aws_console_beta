@@ -1,6 +1,9 @@
-%nav.navnavbar.navbar-expand-lg.navbar-light.bg-light
-  = link_to "CS", "#", class: "navbar-brand"
-  .collapse.navbar-collapse#navbarNavDropdown
-    %ul.navbar-nav
-      %li.nav-item.dropdown
-        = link_to "組織名", "#", class: "nav-link dropdown-toggle"
+%nav.navbar.navbar-dark.bg-dark
+  %a.navbar-brand{href: "#"} Navbar
+  .dropdown
+    %button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle{"aria-expanded": "false", "aria-haspopup": "true", "data-toggle": "dropdown", type: "button"}
+      Dropdown
+    .dropdown-menu{"aria-labelledby": "dropdownMenuButton", style: "z-index:9999"}
+      %a.dropdown-item{href: "#"} Menu #1
+      %a.dropdown-item{href: "#"} Menu #2
+      %a.dropdown-item{href: "#"} Menu #3
