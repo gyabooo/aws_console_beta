@@ -1,21 +1,58 @@
-.main
-  .main__content.card-deck
-    - (1..4).each do
-      .main__content__item.card
-        .main__content__item__header.card-header
-          %span.main__content__item__header__type="EC2"
-          %span.main__content__item__header__name="test"
-          %span.main__content__item__header__ip="1.1.1.1"
-          %span.main__content__item__header__state="up"
-        .main__content__item__body.card-body
-          .main__content__item__body
-            %label.main__content__item__body__key="インスタンスタイプ"
-            %span.main__content__item__body__value="t2.small"
-        .main__content__item__footer.card-footer
-          .main__content__item__footer__btn-group
-            %a.btn.btn-primary{href: "#"} 起動
-            %a.btn.btn-primary{href: "#"} 停止
-            %a.btn.btn-primary{href: "#"} 再起動
-            %a.btn.btn-primary{href: "#"} 詳細
+.main.container-fluid
+  - (1..4).each do |i|
+    .main__accounts.card
+      .main__accounts__header.card-header.d-flex.justify-content-between
+        = link_to "#account_#{i}", class: "main__accounts__header__collapse btn-secondary btn-sm", "data-toggle": "collapse" do
+          = icon "fas", "align-justify"
+        .main__accounts__header__account.d-flex.justify-content-between
+          .main__accounts__header__account__name
+            %span.main__accounts__header__account__name--label="アカウント名: "
+            %span.main__accounts__header__account__name--value="test01"
+          .main__accounts__header__account__id
+            %span.main__accounts__header__account__id--label="アカウントID: "
+            %span.main__accounts__header__account__id--value="0123456789"
+        = link_to "コンソールログイン", "#", class: "btn btn-info btn-sm"
 
-        
+      .main__accounts__body.card-body.collapse{id: "account_#{i}"}
+        .main__content.row.card-columns
+          - (1..4).each do
+            .col-sm-6
+              .main__content__item.card
+                .main__content__item__header.card-header.d-flex.justify-content-between
+                  %span.main__content__item__header__type="EC2"
+                  %span.main__content__item__header__name="test(i-xxxx)"
+                  %span.main__content__item__header__ip="1.1.1.1(EIP)"
+                  %span.main__content__item__header__state--up
+                .main__content__item__body.card-body
+                  .form-group.row
+                    %label.main__content__item__body__key.col-sm.col-form-label="インスタンスタイプ"
+                    %span.main__content__item__body__value.col-sm.form-control="t2.small"
+                  .form-group.row
+                    %label.main__content__item__body__key.col-sm.col-form-label="アベイラビリティーゾーン"
+                    %span.main__content__item__body__value.col-sm.form-control="ap-northeast-1c"
+                  .form-group.row
+                    %label.main__content__item__body__key.col-sm.col-form-label="セキュリティグループ"
+                    %span.main__content__item__body__value.col-sm.form-control="test-sg"
+                  .form-group.row
+                    %label.main__content__item__body__key.col-sm.col-form-label="AMI"
+                    %span.main__content__item__body__value.col-sm.form-control="ami-name(ami-xxxxx)"
+                  .form-group.row
+                    %label.main__content__item__body__key.col-sm.col-form-label="ロール"
+                    %span.main__content__item__body__value.col-sm.form-control="role-name"
+                  .form-group.row
+                    %label.main__content__item__body__key.col-sm.col-form-label="VPC"
+                    %span.main__content__item__body__value.col-sm.form-control="vpc-name(vpc-xxxxx)"
+                  .form-group.row
+                    %label.main__content__item__body__key.col-sm.col-form-label="サブネット"
+                    %span.main__content__item__body__value.col-sm.form-control="subnet-name(subnet-xxxxx)"
+                  .form-group.row
+                    %label.main__content__item__body__key.col-sm.col-form-label="EBS"
+                    %span.main__content__item__body__value.col-sm.form-control="ebs-name(ebs-xxxxx) root /dev/xvda"
+                .main__content__item__footer.card-footer
+                  .main__content__item__footer__btn-group
+                    %a.btn.btn-primary{href: "#"} 起動
+                    %a.btn.btn-primary{href: "#"} 停止
+                    %a.btn.btn-primary{href: "#"} 再起動
+                    %a.btn.btn-primary{href: "#"} 詳細
+
+      

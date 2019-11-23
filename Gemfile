@@ -111,10 +111,10 @@ gem 'omniauth-google-oauth2'
 # gem 'payjp'
 
 # ページネーション
-gem 'kaminari'
+# gem 'kaminari'
 
 # パンくず
-gem "gretel"
+# gem "gretel"
 
 # bootstrapのgemインストール
 gem 'bootstrap', '~> 4.1.1'
@@ -126,3 +126,6 @@ gem 'aws-sdk-s3', '~> 1'
 
 # 認可関係
 gem "pundit"
+
+# fontawesome5系を利用
+gem 'font-awesome-sass', '~> 5.11.2'

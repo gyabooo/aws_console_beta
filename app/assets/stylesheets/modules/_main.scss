@@ -1,0 +1,40 @@
+.main {
+  &__accounts {
+    margin-bottom: 20px;
+
+    &__header {
+      &__account{
+        &__name span, &__id span {
+          vertical-align: middle;
+        }
+
+        &__name:first-child {
+          margin-right: 20px;
+        }
+      }
+    }
+  }
+
+  &__content {
+    &__item {
+      &__header {
+        &__state {
+          &--up {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: chartreuse;
+            border: 1px solid gainsboro;
+          }
+          &--down {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: orange;
+            border: 1px solid gainsboro;
+          }
+        }
+      }
+    }
+  }
+}

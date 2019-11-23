@@ -1,1 +1,13 @@
- @import "bootstrap";
+// 共通
+@import "./reset";
+
+// ブートストラップ4系
+@import "bootstrap";
+
+// fontawesome
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+// 各パーツ
+@import "./modules/header";
+@import "./modules/main";
