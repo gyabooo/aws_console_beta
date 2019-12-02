@@ -1,0 +1,22 @@
+.organization
+  .organization__header.d-flex.align-items-center
+    %h2.organization__header__title="組織一覧"
+    .organization__header__btns
+      = link_to "新規作成", new_organization_path, class: "btn btn-primary btn-sm"
+  %table.organization__table.table.table-bordered
+    %thead.thead-light
+      %tr
+        %th="組織名"
+        %th="作成者"
+        %th="所属ユーザー一覧"
+        %th="操作"
+    %tbody
+      %tr
+        %td="エクストランスCS"
+        %td="admin@test.local"
+        %td
+          .organization__table__users="admin@test.local"
+          .organization__table__users="test@test.local"
+        %td.organization__table__operations
+          .btn.btn-primary="編集"
+          .btn.btn-primary="削除"

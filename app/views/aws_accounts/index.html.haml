@@ -1,0 +1,20 @@
+.aws-accounts
+  .aws-accounts__header.d-flex.align-items-center
+    %h2.aws-accounts__header__title="AWSアカウント一覧"
+    .aws-accounts__header__btns
+      = link_to "新規登録", new_aws_account_path, class: "btn btn-primary btn-sm"
+  %table.aws-accounts__table.table.table-bordered
+    %thead.thead-light
+      %tr
+        %th="アカウントID"
+        %th="アカウント名"
+        %th="組織"
+        %th="操作"
+    %tbody
+      %tr
+        %td="1234567890"
+        %td="社内用アカウント"
+        %td="エクストランスCS"
+        %td.aws-accounts__table__operations
+          .btn.btn-primary="編集"
+          .btn.btn-primary="削除"

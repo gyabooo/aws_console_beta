@@ -1,0 +1,12 @@
+.aws-accounts
+  %h2.aws-accounts__title="AWSアカウント登録"
+  .aws-accounts__new
+    = form_with model: [AwsAccount.new], class: 'aws-accounts__new__form', local: true do |f|
+      .form-group.row
+        = f.label :name, class: "col-sm-2 col-form-label"
+        .aws-accounts__new__form__input.col-sm-10
+          = f.text_field :name, class: "form-control"
+      .form-group.row
+        .col-sm-2.col-form-label
+        .col-sm-10
+          =f.submit "作成", class: "btn btn-primary"

@@ -1,12 +1,15 @@
 %nav.header.navbar.navbar-expand-lg.navbar-dark.bg-dark.sticky-top.d-flex.justify-content-between
-  = link_to "AWSコンソール Beta", "#", class: "navbar-brand"
+  = link_to "AWSコンソール Beta", root_path, class: "navbar-brand"
   .d-flex
-    %span.navbar-text.header__organization-name.text-light="エクストランスCS"
-    %span.navbar-text.header__current-user.text-light="test@test.local"
-    .dropdown
-      %button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle{"aria-expanded": "false", "aria-haspopup": "true", "data-toggle": "dropdown", type: "button"}
-        メニュー
-      .dropdown-menu.dropdown-menu-right{"aria-labelledby": "dropdownMenuButton", style: "z-index:9999"}
-        = link_to "組織", "#", class: "dropdown-item"
-        = link_to "アカウント管理", "#", class: "dropdown-item"
-        = link_to "ログアウト", "#", class: "dropdown-item"
+    - if user_signed_in?
+      %span.navbar-text.header__current-user.text-light="#{current_user.name} ( #{current_user.email} ) "
+      .dropdown
+        %button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle{"aria-expanded": "false", "aria-haspopup": "true", "data-toggle": "dropdown", type: "button"}
+          メニュー
+        .dropdown-menu.dropdown-menu-right{"aria-labelledby": "dropdownMenuButton", style: "z-index:9999"}
+          = link_to "組織", organizations_path, class: "dropdown-item"
+          = link_to "AWSアカウント管理", aws_accounts_path, class: "dropdown-item"
+          = link_to "ユーザー管理", users_path, class: "dropdown-item"
+          = link_to "ログアウト", destroy_user_session_path, class: "dropdown-item", method: :delete
+    - else
+      %span.navbar-text.header__current-user.text-light="ゲスト"

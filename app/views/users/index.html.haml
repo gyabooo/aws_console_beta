@@ -1,0 +1,19 @@
+.users
+  %h2.users__title="ユーザー一覧"
+  %table.users__table.table.table-bordered
+    %thead.thead-light
+      %tr
+        %th="ユーザー名"
+        %th="メールアドレス"
+        %th="所属組織一覧"
+        %th="操作"
+    %tbody
+      %tr
+        %td="テスト"
+        %td="test@test.local"
+        %td
+          .users__table__organizations="エクストランスCS"
+          .users__table__organizations="エクストランス"
+        %td.users__table__operations
+          .btn.btn-primary="編集"
+          .btn.btn-primary="削除"

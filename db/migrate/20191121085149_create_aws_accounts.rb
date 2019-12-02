@@ -4,7 +4,7 @@ class CreateAwsAccounts < ActiveRecord::Migration[5.2]
       t.string :name, null: false
       t.string :description
       t.string :account_id, null: false
-      t.references :organization
+      t.references :organization, foreign_key: true
       t.timestamps
     end
   end

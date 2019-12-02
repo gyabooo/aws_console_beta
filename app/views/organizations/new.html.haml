@@ -1,0 +1,12 @@
+.organization
+  %h2.organization__title="組織作成"
+  .organization__new
+    = form_with model: [Organization.new], class: 'organization__new__form', local: true do |f|
+      .form-group.row
+        = f.label :name, class: "col-sm-2 col-form-label"
+        .organization__new__form__input.col-sm-10
+          = f.text_field :name, class: "form-control"
+      .form-group.row
+        .col-sm-2.col-form-label
+        .col-sm-10
+          =f.submit "作成", class: "btn btn-primary"

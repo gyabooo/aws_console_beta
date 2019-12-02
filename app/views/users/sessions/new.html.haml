@@ -1,17 +1,20 @@
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "current-password"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "users/shared/links"
+.users--nologin.card.mx-auto
+  %h2.card-header.users__title="ユーザーログイン"
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    .card-body
+      .form-group.row
+        = f.label :email, class: "col-sm-3 col-form-label"
+        .col-sm-9
+          = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control"
+      .form-group.row
+        = f.label :password, class: "col-sm-3 col-form-label"
+        .col-sm-9
+          = f.password_field :password, autocomplete: "current-password", class: "form-control"
+      - if devise_mapping.rememberable?
+        .field
+          = f.check_box :remember_me
+          = f.label :remember_me
+    .card-footer
+      .actions
+        = f.submit "ログイン", class: "btn btn-primary"
+      = render "users/shared/links"
