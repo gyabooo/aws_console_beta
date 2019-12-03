@@ -6,4 +6,6 @@ class User < ApplicationRecord
 
   has_many :organization_users
   has_many :organizations, through: :organization_users
+
+  enum role_type: ['admin', 'general']
 end

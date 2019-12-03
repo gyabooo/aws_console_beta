@@ -1,14 +1,14 @@
-https://ap-northeast-1.console.aws.amazon.com/cloudformation/home?region=ap-northeast-1#/stacks/create/review?templateURL=https://pmj-bucket-prd.s3-ap-northeast-1.amazonaws.com/templates/opswitch_access_role_04_0.yml&stackName=opswitch-4-0&param_ExternalId=1ef4394f-967d-49e7-add6-670c2d570b6c&param_opswitchAccountId=444411381513
+https://ap-northeast-1.console.aws.amazon.com/cloudformation/home?region=ap-northeast-1#/stacks/create/review?templateURL=https://pmj-bucket-prd.s3-ap-northeast-1.amazonaws.com/templates/opswitch_access_role_04_0.yml&stackName=opswitch-4-0&param_ExternalId=1ef4394f-967d-49e7-add6-670c2d570b6c&param_AccountId=444411381513
 
 AWSTemplateFormatVersion: "2010-09-09"
-Description: Create IAM-Role for opswitch
+Description: Create IAM-Role for aws-console-beta
 Parameters:
   ExternalId:
     Type: String
-    Description: opswitch External ID
-  opswitchAccountId:
+    Description: External ID
+  AccountId:
     Type: String
-    Description: opswitch AWSAccount ID
+    Description: AWSAccount ID
 Resources:
   IAMRole:
     Type: "AWS::IAM::Role"
@@ -19,7 +19,7 @@ Resources:
           -
             Effect: "Allow"
             Principal:
-              AWS: !Sub "arn:aws:iam::${opswitchAccountId}:root"
+              AWS: !Sub "arn:aws:iam::${AccountId}:root"
             Action:
               - "sts:AssumeRole"
             Condition:
