@@ -13,6 +13,7 @@ workflows:
       - aws-ecs/deploy-service-update:
           requires:
             - aws-ecr/build-and-push-image
-          family: 'service-aws-console-beta'
+          family: 'task-aws-console-beta'
           cluster-name: 'cl-aws-console-beta-01'
+          service-name: 'service-aws-console-beta'
           container-image-name-updates: 'container=container-aws-console-beta,tag=${CIRCLE_SHA1}'
