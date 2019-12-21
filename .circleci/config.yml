@@ -1,8 +1,18 @@
 version: 2.1
-jobs:
-  build:
-    docker:
-      - image: circleci/node:4.8.2
-    steps:
-      - checkout
-      - run: echo "hello world"
+orbs:
+  aws-ecr: circleci/aws-ecr@6.6.0
+  aws-ecs: circleci/aws-ecs@1.0.4
+workflows:
+  build-and-deploy:
+    jobs:
+      - aws-ecr/build-and-push-image:
+          account-url: AWS_ECR_ACCOUNT_URL
+          repo: 'aws-console-beta'
+          tag: '${CIRCLE_SHA1}'
+
+      - aws-ecs/deploy-service-update:
+          requires:
+            - aws-ecr/build-and-push-image
+          family: 'task-aws-console-beta'
+          cluster-name: 'cl-aws-console-beta'
+          container-image-name-updates: 'container=aws_console_beta_web,image-and-tag=${AWS_ECR_ACCOUNT_URL}/aws_console_beta_web:${CIRCLE_SHA1}'
