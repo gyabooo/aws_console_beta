@@ -14,5 +14,5 @@ workflows:
           requires:
             - aws-ecr/build-and-push-image
           family: 'task-aws-console-beta'
-          cluster-name: 'cl-aws-console-beta'
+          cluster-name: 'cl-aws-console-beta-01'
           container-image-name-updates: 'container=container-aws-console-beta,tag=${CIRCLE_SHA1}'
