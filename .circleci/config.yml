@@ -15,4 +15,4 @@ workflows:
             - aws-ecr/build-and-push-image
           family: 'task-aws-console-beta'
           cluster-name: 'cl-aws-console-beta'
-          container-image-name-updates: 'container=aws_console_beta_web,image-and-tag=${AWS_ECR_ACCOUNT_URL}/aws_console_beta_web:${CIRCLE_SHA1}'
+          container-image-name-updates: 'container=aws_console_beta_web,tag=${CIRCLE_SHA1}'
