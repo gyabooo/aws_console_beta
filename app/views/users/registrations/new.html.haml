@@ -17,7 +17,7 @@
           = f.password_field :password, autocomplete: "new-password", class: "form-control"
           - if @minimum_password_length
             %em
-              (#{@minimum_password_length} characters minimum)
+              (#{@minimum_password_length} 文字以上)
       .form-group.row
         = f.label :password_confirmation, class: "col-sm-3 col-form-label"
         .col-sm-9
@@ -47,7 +47,7 @@
             = f.password_field :password, autocomplete: "new-password", class: "form-control"
             - if @minimum_password_length
               %em
-                (#{@minimum_password_length} characters minimum)
+                (#{@minimum_password_length} 文字以上)
         .form-group.row
           = f.label :password_confirmation, class: "col-sm-3 col-form-label"
           .col-sm-9

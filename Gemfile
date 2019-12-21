@@ -93,7 +93,7 @@ gem 'haml-rails'
 gem 'gon'
 
 # decorater追加
-gem 'draper'
+#gem 'draper'
 # gem "active_hash"
 # gem "ancestry"
 gem "enum_help"
@@ -123,9 +123,16 @@ gem 'jquery-rails'
 # AWS関連
 gem 'aws-sdk-rails', '~> 2'
 gem 'aws-sdk-s3', '~> 1'
+gem 'aws-sdk-ec2', '~> 1'
 
 # 認可関係
 gem "pundit"
 
 # fontawesome5系を利用
 gem 'font-awesome-sass', '~> 5.11.2'
+
+# gem 'activerecord-import'
+# gem 'dynamoid'
+
+gem "enum_help"
+gem 'rails-i18n', '~> 5.1'

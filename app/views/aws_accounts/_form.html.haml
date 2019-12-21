@@ -1,0 +1,33 @@
+= link_to "IAM Roleを作成", "https://ap-northeast-1.console.aws.amazon.com/cloudformation/home?region=ap-northeast-1#/stacks/create/review?templateURL=https://aws-account-beta-cfn-tpl.s3-ap-northeast-1.amazonaws.com/aws-console-beta-cfn.yaml&stackName=aws-console-beta&param_ExternalId=#{@aws_account[:external_id]}&param_AccountId=516278139747", target: :_blank, class: "btn btn-primary btn-sm"
+= form_with model: [@aws_account], class: 'aws-accounts__form', local: true do |f|
+  .form-group.row
+    = f.label :name, class: "col-sm-2 col-form-label"
+    .aws-accounts__form__input.col-sm-10
+      = f.text_field :name, class: "form-control"
+  .form-group.row
+    = f.label :description, class: "col-sm-2 col-form-label"
+    .aws-accounts__form__input.col-sm-10
+      = f.text_field :description, class: "form-control"
+  .form-group.row
+    = f.label :account_id, class: "col-sm-2 col-form-label"
+    .aws-accounts__form__input.col-sm-10
+      = f.text_field :account_id, class: "form-control"
+  .form-group.row
+    = f.label :external_id, class: "col-sm-2 col-form-label"
+    .aws-accounts__form__input.col-sm-10
+      = f.text_field :external_id, value: @aws_account[:external_id], readonly: true, class: "form-control"
+  .form-group.row
+    = f.label :role_name, class: "col-sm-2 col-form-label"
+    .aws-accounts__form__input.col-sm-10
+      = f.text_field :role_name, class: "form-control"
+  .form-group.row
+    = f.label :organization_id, class: "col-sm-2 col-form-label"
+    .aws-accounts__form__input.col-sm-10
+      = f.collection_select :organization_id, @organizations, :id, :name, include_blank: true, class: "form-control"
+  .form-group.row
+    .col-sm-2.col-form-label
+    .col-sm-10
+      - if type == :new
+        =f.submit '新規', class: "btn btn-primary"
+      - elsif type == :edit
+        =f.submit '編集', class: "btn btn-primary"

@@ -1,0 +1,31 @@
+ja:
+  activerecord:
+    models:
+      user: アカウント
+      organization: 組織
+      aws_account: AWSアカウント
+    attributes:
+      user:
+        name: "名前"
+        email: "メールアドレス"
+        password: パスワード
+        password_confirmation: パスワード再入力
+        remember_me: ログイン情報を記憶する
+      organization:
+        name: "組織名"
+        owner: "オーナー"
+      aws_account:
+        name: "名前"
+        description: "説明"
+        account_id: "アカウントID"
+        external_id: "External ID"
+        role_name: "ロール名"
+        organization_id: 組織
+  enums:
+    user:
+      role:
+        general: 一般
+        admin: 管理者
+        system_admin: システム管理者
+
+

@@ -1,0 +1,13 @@
+.organization
+  %h2.organization__title="組織編集"
+  .organization__edit
+    = form_with model: [@organization], class: 'organization__edit__form', local: true do |f|
+      .form-group.row
+        = f.label :name, class: "col-sm-2 col-form-label"
+        .organization__edit__form__input.col-sm-10
+          = f.text_field :name, class: "form-control"
+      .form-group.row
+        .col-sm-2.col-form-label
+        .col-sm-10
+          = f.submit "編集", class: "btn btn-primary"
+          = link_to "戻る", :back, class: "btn btn-outline-secondary"

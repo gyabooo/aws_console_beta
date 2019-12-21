@@ -7,16 +7,37 @@
     %thead.thead-light
       %tr
         %th="組織名"
-        %th="作成者"
+        %th="オーナー"
         %th="所属ユーザー一覧"
         %th="操作"
     %tbody
-      %tr
-        %td="エクストランスCS"
-        %td="admin@test.local"
-        %td
-          .organization__table__users="admin@test.local"
-          .organization__table__users="test@test.local"
-        %td.organization__table__operations
-          .btn.btn-primary="編集"
-          .btn.btn-primary="削除"
+      - @organizations.each do |organization|
+        %tr
+          %td=organization.name
+          %td="#{organization.owner.name} ( #{organization.owner.email} )"
+          %td
+            - organization.users.each do |user|
+              .organization__table__users="#{user.name} ( #{user.email} )"
+          %td.organization__table__operations
+            = link_to '編集', edit_organization_path(organization), class: "btn btn-primary"
+            = button_tag '削除', class: "btn btn-danger", "data-toggle": "modal", "data-target": "#organization_delete_#{organization.id}"
+
+        .modal.fade{id: "organization_delete_#{organization.id}", tabindex: "-1", role: "dialog", "aria-labelledby": "organization_delete_title_#{organization.id}", "aria-hidden": "true"}
+          .modal-dialog.modal-dialog-centered{role: "document"}
+            .modal-content
+              .modal-header
+                %h5{id: "organization_delete_title_#{organization.id}"}="#{organization.name} を削除してもよろしいですか？"
+                = button_tag nil, class: "close", "aria-label": "Close", "data-dismiss": "modal", type: "button" do
+                  %span{"aria-hidden" => "true"} ×
+              .modal-body
+                .organizations__owner.form-group
+                  %label="オーナー："
+                  %label.form-control="#{organization.owner.name} ( #{organization.owner.email} )"
+                .organizations__user.form-group
+                  %label="ユーザー："
+                  %label.form-control
+                    - organization.users.each do |user|
+                      ="#{user.name} ( #{user.email} )"
+              .modal-footer
+                = link_to '削除', organization_path(organization), class: "btn btn-danger", method: :delete
+                = button_tag "閉じる", class: "btn btn-secondary", "data-dismiss": "modal", type: "button"

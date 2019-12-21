@@ -1,7 +1,7 @@
 .organization
   %h2.organization__title="組織作成"
   .organization__new
-    = form_with model: [Organization.new], class: 'organization__new__form', local: true do |f|
+    = form_with model: [@organization], class: 'organization__new__form', local: true do |f|
       .form-group.row
         = f.label :name, class: "col-sm-2 col-form-label"
         .organization__new__form__input.col-sm-10

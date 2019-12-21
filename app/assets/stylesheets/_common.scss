@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP');
+
+* {
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+#error_explanation {
+  color: red;
+
+  h2 {
+    font-size: 20px;
+  }
+}
+
+.field_with_errors {
+  display: contents;
+
+  input {
+    @extend .is-invalid;
+  }
+}

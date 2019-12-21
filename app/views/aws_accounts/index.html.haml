@@ -11,10 +11,38 @@
         %th="組織"
         %th="操作"
     %tbody
-      %tr
-        %td="1234567890"
-        %td="社内用アカウント"
-        %td="エクストランスCS"
-        %td.aws-accounts__table__operations
-          .btn.btn-primary="編集"
-          .btn.btn-primary="削除"
+      - @aws_accounts.each do |aws_account|
+        %tr
+          %td=aws_account.account_id
+          %td=aws_account.name
+          %td=aws_account.org_name
+          %td.aws-accounts__table__operations
+            = link_to "編集", edit_aws_account_path(aws_account), class: "btn btn-primary"
+            = button_tag '削除', class: "btn btn-danger", "data-toggle": "modal", "data-target": "#aws_account_delete_#{aws_account.id}"
+
+        .modal.fade{id: "aws_account_delete_#{aws_account.id}", tabindex: "-1", role: "dialog", "aria-labelledby": "aws_account_delete_title_#{aws_account.id}", "aria-hidden": "true"}
+          .modal-dialog.modal-dialog-centered{role: "document"}
+            .modal-content
+              .modal-header
+                %h5{id: "aws_account_delete_title_#{aws_account.id}"}="#{aws_account.name} を削除してもよろしいですか？"
+                = button_tag nil, class: "close", "aria-label": "Close", "data-dismiss": "modal", type: "button" do
+                  %span{"aria-hidden" => "true"} ×
+              .modal-body
+                .aws_account__description.form-group
+                  %label="#{AwsAccount.human_attribute_name('description')} : "
+                  %label.form-control="#{aws_account.description}"
+                .aws_account__account_id.form-group
+                  %label.text-right="#{AwsAccount.human_attribute_name('account_id')} : "
+                  %label.form-control="#{aws_account.account_id}"
+                .aws_account__external_id.form-group
+                  %label="#{AwsAccount.human_attribute_name('external_id')} : "
+                  %label.form-control="#{aws_account.external_id}"
+                .aws_account__role_name.form-group
+                  %label="#{AwsAccount.human_attribute_name('role_name')} : "
+                  %label.form-control="#{aws_account.role_name}"
+                .aws_account__organization.form-group
+                  %label="#{AwsAccount.human_attribute_name('organization_id')} : "
+                  %label.form-control="#{aws_account.org_name}"
+              .modal-footer
+                = link_to '削除', aws_account_path(aws_account), class: "btn btn-danger", method: :delete
+                = button_tag "閉じる", class: "btn btn-secondary", "data-dismiss": "modal", type: "button"
