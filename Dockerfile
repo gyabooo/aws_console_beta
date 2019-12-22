@@ -7,6 +7,8 @@ COPY Gemfile /${APP_NAME}/Gemfile
 COPY Gemfile.lock /${APP_NAME}/Gemfile.lock
 RUN bundle install
 COPY . /${APP_NAME}
+ARG RAILS_MASTER_KEY
+ENV RAILS_MASTER_KEY ${RAILS_MASTER_KEY}
 
 # Add a script to be executed every time the container starts.
 COPY entrypoint.sh /usr/bin/
