@@ -1,5 +1,5 @@
 FROM ruby:2.6
-RUN apt-get update -qq && apt-get install -y nodejs build-essential mysql-client
+RUN apt-get update -qq && apt-get install -y nodejs build-essential default-mysql-client
 ENV APP_NAME aws-console-beta
 RUN mkdir /${APP_NAME}
 WORKDIR /${APP_NAME}
