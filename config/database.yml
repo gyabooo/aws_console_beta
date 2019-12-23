@@ -52,4 +52,4 @@ production:
   database: aws_console_beta_production
   username: <%= Rails.application.credentials.db[:production][:username] %>
   password: <%= Rails.application.credentials.db[:production][:password] %>
-  host: db-aws-console-beta.cquzhe3avqow.ap-northeast-1.rds.amazonaws.com
+  host: "db-aws-console-beta.cquzhe3avqow.ap-northeast-1.rds.amazonaws.com"
