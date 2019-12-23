@@ -42,14 +42,14 @@ workflows:
           tag: '${CIRCLE_SHA1}'
           extra-build-args: '--build-arg RAILS_MASTER_KEY=${RAILS_MASTER_KEY} --build-arg RAILS_ENV=${RAILS_ENV}'
 
-      # - db-create-migrate-on-task-run:
-      #     requires:
-      #       - aws-ecr/build-and-push-image
+      - db-create-migrate-on-task-run:
+          requires:
+            - aws-ecr/build-and-push-image
 
       - aws-ecs/deploy-service-update:
           requires:
-            # - db-create-migrate-on-task-run
-            - aws-ecr/build-and-push-image
+            - db-create-migrate-on-task-run
+            # - aws-ecr/build-and-push-image
           family: 'task-aws-console-beta'
           cluster-name: 'cl-aws-console-beta'
           service-name: 'service-aws-console-beta'
