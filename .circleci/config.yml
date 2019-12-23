@@ -7,7 +7,7 @@ orbs:
 executors:
   container:
     docker:
-      - image: "${AWS_ECR_ACCOUNT_URL}/aws-console-beta"
+      - image: "${AWS_ECR_ACCOUNT_URL}/aws-console-beta:${CIRCLE_SHA1}"
 
 jobs:
   db-create-migrate-on-task-run:
@@ -53,6 +53,6 @@ workflows:
           family: 'task-aws-console-beta'
           cluster-name: 'cl-aws-console-beta'
           service-name: 'service-aws-console-beta'
-          container-image-name-updates: 'container=container-aws-console-beta,tag=latest'
+          container-image-name-updates: 'container=container-aws-console-beta,tag=${CIRCLE_SHA1}'
 
 
