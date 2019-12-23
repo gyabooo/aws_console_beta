@@ -26,14 +26,14 @@ jobs:
             aws ecs run-task --region $AWS_REGION \
               --cluster cl-aws-console-beta \
               --task-definition task-aws-console-beta \
-              --overrides '{ "containerOverrides": [ { "command": ["rails", "db:create"] } ] }'
+              --overrides '{ "containerOverrides": [ { "name": "container-aws-console-beta", "command": ["rails", "db:create"] } ] }'
       - run:
           name: "db migrate"
           command: |
             aws ecs run-task --region $AWS_REGION \
               --cluster cl-aws-console-beta \
               --task-definition task-aws-console-beta \
-              --overrides '{ "containerOverrides": [ { "command": ["rails", "db:migrate"] } ] }'
+              --overrides '{ "containerOverrides": [ { "name": "container-aws-console-beta", "command": ["rails", "db:migrate"] } ] }'
 
 workflows:
   build-and-deploy:
