@@ -92,15 +92,6 @@ class Api::V1::Ec2Controller < ApplicationController
     
     ec2 = Aws::EC2::Resource.new(region: Rails.application.credentials.aws[:region], credentials: role)
     @instance = ec2.instance(ec2_params[:instance_id])
-    # binding.pry
   end
 
-  # def wait_for_instances(ec2, state, ids)
-  #   begin
-  #     ec2.wait_until(state, instance_ids: ids)
-  #     puts "Success: #{state}."
-  #   rescue Aws::Waiters::Errors::WaiterFailed => error
-  #     puts "Failed: #{error.message}"
-  #   end
-  # end
 end

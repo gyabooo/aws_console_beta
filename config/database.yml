@@ -15,6 +15,7 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
   password:
+  host: db
 
 development:
   <<: *default
@@ -49,5 +50,6 @@ test:
 production:
   <<: *default
   database: aws_console_beta_production
-  username: aws_console_beta
-  password: <%= ENV['AWS_CONSOLE_BETA_DATABASE_PASSWORD'] %>
+  username: <%= Rails.application.credentials.db[:production][:username] %>
+  password: <%= Rails.application.credentials.db[:production][:password] %>
+  host: db-aws-console-beta.cquzhe3avqow.ap-northeast-1.rds.amazonaws.com
