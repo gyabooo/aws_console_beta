@@ -2,6 +2,16 @@ version: 2.1
 orbs:
   aws-ecr: circleci/aws-ecr@6.6.0
   aws-ecs: circleci/aws-ecs@1.0.4
+
+jobs:
+  rails-commands:
+    machine:
+      image: ubuntu-1604:201903-01
+    steps:
+      - run:
+          name: Create Database
+          command: rails db:create
+
 workflows:
   build-and-deploy:
     jobs:
@@ -19,13 +29,4 @@ workflows:
           service-name: 'service-aws-console-beta'
           container-image-name-updates: 'container=container-aws-console-beta,tag=${CIRCLE_SHA1}'
 
-      - rails-db-create:
-          requires:
-            - aws-ecs/deploy-service-update
-          machine:
-            image: ubuntu-1604:201903-01
-            steps:
-              - checkout
-              - run:
-                  name: Create Database
-                  command: rails db:create
+
