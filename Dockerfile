@@ -1,5 +1,5 @@
 FROM ruby:2.6
-RUN apt-get update -qq && apt-get install -y nodejs build-essential
+RUN apt-get update -qq && apt-get install -y nodejs build-essential mysql-client
 ENV APP_NAME aws-console-beta
 RUN mkdir /${APP_NAME}
 WORKDIR /${APP_NAME}
@@ -13,7 +13,7 @@ ENV RAILS_MASTER_KEY ${RAILS_MASTER_KEY}
 ARG RAILS_ENV
 ENV RAILS_ENV ${RAILS_ENV}
 
-RUN rails db:create
+# RUN rails db:create
 
 # Add a script to be executed every time the container starts.
 COPY entrypoint.sh /usr/bin/
