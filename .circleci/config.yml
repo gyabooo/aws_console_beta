@@ -18,3 +18,14 @@ workflows:
           cluster-name: 'cl-aws-console-beta'
           service-name: 'service-aws-console-beta'
           container-image-name-updates: 'container=container-aws-console-beta,tag=${CIRCLE_SHA1}'
+
+      - rails-db-create:
+          requires:
+            - aws-ecs/deploy-service-update
+          machine:
+            image: ubuntu-1604:201903-01
+            steps:
+              - checkout
+              - run:
+                  name: Create Database
+                  command: rails db:create
