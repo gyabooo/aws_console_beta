@@ -9,7 +9,7 @@ workflows:
           account-url: AWS_ECR_ACCOUNT_URL
           repo: 'aws-console-beta'
           tag: '${CIRCLE_SHA1}'
-          extra-build-args: 'RAILS_MASTER_KEY=${RAILS_MASTER_KEY},RAILS_ENV=${RAILS_ENV}'
+          extra-build-args: '--build-arg RAILS_MASTER_KEY=${RAILS_MASTER_KEY} --build-arg RAILS_ENV=${RAILS_ENV}'
 
       - aws-ecs/deploy-service-update:
           requires:
