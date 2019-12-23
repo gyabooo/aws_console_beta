@@ -13,7 +13,7 @@ ENV RAILS_MASTER_KEY ${RAILS_MASTER_KEY}
 ARG RAILS_ENV
 ENV RAILS_ENV ${RAILS_ENV}
 
-# RUN rails db:create
+RUN rails db:create
 
 # Add a script to be executed every time the container starts.
 COPY entrypoint.sh /usr/bin/
