@@ -7,7 +7,7 @@ orbs:
 executors:
   container:
     docker:
-      - image: "${AWS_ECR_ACCOUNT_URL}/aws-console-beta:latest"
+      - image: "${AWS_ECR_ACCOUNT_URL}/aws-console-beta"
 
 jobs:
   db-create-migrate-on-task-run:
