@@ -1,4 +1,5 @@
 $(function () {
+  
   $(document).on('turbolinks:load', function (e) {
     $(".ec2-action-btn").on('click', function (e) {
       e.preventDefault();
@@ -61,7 +62,6 @@ $(function () {
           alert(`EC2インスタンスの${origin_btn_text}に失敗しました`);
         });
     })
-
   });
 
 })
