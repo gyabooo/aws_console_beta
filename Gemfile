@@ -117,7 +117,7 @@ gem 'omniauth-google-oauth2'
 # gem "gretel"
 
 # bootstrapのgemインストール
-gem 'bootstrap', '~> 4.1.1'
+gem 'bootstrap', '~> 4.4.1'
 gem 'jquery-rails'
 
 # AWS関連

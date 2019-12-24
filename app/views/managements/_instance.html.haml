@@ -1,0 +1,47 @@
+.col-sm-6
+  .main__content__item.card
+    .main__content__item__header.card-header.d-flex.justify-content-between
+      %span.main__content__item__header__type="EC2"
+      %span.main__content__item__header__instance-id=instance.id
+      %span.main__content__item__header__ip=instance.public_ip_address
+      - if instance.data.state.name.match?('running')
+        %span.main__content__item__header__state.main__content__item__header__state--up
+      - else
+        %span.main__content__item__header__state.main__content__item__header__state--down
+    .main__content__item__body.card-body
+      .form-group.row
+        %label.main__content__item__body__key.col-sm.col-form-label.text-right="インスタンスタイプ"
+        %span.main__content__item__body__value.col-sm-7.form-control.text-nowrap.text-truncate=instance.data.instance_type
+      .form-group.row
+        %label.main__content__item__body__key.col-sm.col-form-label.text-right="アベイラビリティーゾーン"
+        %span.main__content__item__body__value.col-sm-7.form-control.text-nowrap.text-truncate=instance.data.placement.availability_zone
+      .form-group.row
+        %label.main__content__item__body__key.col-sm.col-form-label.text-right="セキュリティグループ"
+        - instance.data.security_groups.each do |group|
+          %span.main__content__item__body__value.col-sm-7.form-control.text-nowrap.text-truncate=group.group_name
+      .form-group.row
+        %label.main__content__item__body__key.col-sm.col-form-label.text-right="AMI"
+        %span.main__content__item__body__value.col-sm-7.form-control.text-nowrap.text-truncate=instance.data.image_id
+      .form-group.row
+        %label.main__content__item__body__key.col-sm.col-form-label.text-right="ロール"
+        %span.main__content__item__body__value.col-sm-7.form-control.text-nowrap.text-truncate=instance.data.iam_instance_profile.arn[/.*\/(.*)/, 1] if instance.data.key?('iam_instance_profile')
+      .form-group.row
+        %label.main__content__item__body__key.col-sm.col-form-label.text-right="VPC"
+        %span.main__content__item__body__value.col-sm-7.form-control.text-nowrap.text-truncate=instance.data.vpc_id
+      .form-group.row
+        %label.main__content__item__body__key.col-sm.col-form-label.text-right="サブネット"
+        %span.main__content__item__body__value.col-sm-7.form-control.text-nowrap.text-truncate=instance.data.subnet_id
+      .form-group.row
+        %label.main__content__item__body__key.col-sm.col-form-label.text-right="EBS"
+        - instance.data.block_device_mappings.each do |dev|
+          %span.main__content__item__body__value.col-sm-7.form-control.text-nowrap.text-truncate="#{dev.device_name} (#{dev.ebs.volume_id})"
+    .main__content__item__footer.card-footer
+      .main__content__item__footer__btn-group
+        - if instance.data.state.name.match?('running')
+          = link_to "起動", api_v1_ec2_start_path, class: "ec2-action-btn ec2-start-btn btn btn-secondary disabled", tabindex: "-1", role: "button", "aria-disabled": "true", data: {instance_id: instance.id}
+          = link_to "停止", api_v1_ec2_stop_path, class: "ec2-action-btn ec2-stop-btn btn btn-warning text-white active", data: {instance_id: instance.id}
+          = link_to "再起動", api_v1_ec2_restart_path, class: "ec2-action-btn ec2-restart-btn btn btn-primary active", data: {instance_id: instance.id}
+        - else
+          = link_to "起動", api_v1_ec2_start_path, class: "ec2-action-btn ec2-start-btn btn btn-success active", data: {instance_id: instance.id}
+          = link_to "停止", api_v1_ec2_stop_path, class: "ec2-action-btn ec2-action-btn ec2-stop-btn btn btn-secondary text-white disabled", tabindex: "-1", role: "button", "aria-disabled": "true", data: {instance_id: instance.id}
+          = link_to "再起動", api_v1_ec2_restart_path, class: "ec2-action-btn ec2-restart-btn btn btn-primary active", data: {instance_id: instance.id}

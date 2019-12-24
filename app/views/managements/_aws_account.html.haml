@@ -1,0 +1,19 @@
+= form_with model: aws_account, class: "main__accounts card", local: true, method: :post do |f|
+  = f.hidden_field :account_id
+  = f.hidden_field :external_id
+  = f.hidden_field :role_name
+  .main__accounts__header.card-header.d-flex.justify-content-between
+    = link_to "#aws_account_#{aws_account.id}", class: "main__accounts__header__collapse btn-secondary btn-sm", "data-toggle": "collapse" do
+      = icon "fas", "align-justify"
+    .main__accounts__header__account.d-flex.justify-content-between
+      .main__accounts__header__account__name
+        %span.main__accounts__header__account__name--label="アカウント名: "
+        %span.main__accounts__header__account__name--value=aws_account.name
+      .main__accounts__header__account__id
+        %span.main__accounts__header__account__id--label="アカウントID: "
+        %span.main__accounts__header__account__id--value=aws_account.account_id
+    = link_to "コンソールログイン", @console_urls[aws_account.id], class: "btn btn-info btn-sm", target: '_blank'
+
+  .main__accounts__body.card-body.collapse{id: "aws_account_#{aws_account.id}"}
+    .main__content.row.card-columns
+      = render partial: 'instance', collection: @ec2[aws_account.id].instances, as: 'instance'
