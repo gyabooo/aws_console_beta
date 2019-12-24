@@ -1,5 +1,5 @@
 $(function () {
-  // $(document).on('turbolinks:load', function (e) {
+  $(document).on('turbolinks:load', function (e) {
     $(".ec2-action-btn").on('click', function (e) {
       e.preventDefault();
       let url = e.currentTarget.href;
@@ -62,6 +62,6 @@ $(function () {
         });
     })
 
-  // });
+  });
 
 })
