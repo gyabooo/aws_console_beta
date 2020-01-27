@@ -6,7 +6,7 @@ ruby '2.6.5'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
 # Use mysql as the database for Active Record
-gem 'mysql2', '>= 0.4.4', '< 0.6.0'
+# gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -60,6 +60,7 @@ group :development do
 
   # N+1問題の発見
   gem 'bullet'
+  gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 end
 
 group :test do
@@ -73,15 +74,16 @@ end
 # 本番環境はunicornを利用
 group :production do
   gem 'unicorn', '5.4.1'
+  gem 'pg'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # 画像アップロードで利用
-gem 'carrierwave'
-gem 'mini_magick'
-gem 'fog-aws'
+# gem 'carrierwave'
+# gem 'mini_magick'
+# gem 'fog-aws'
 
 # ログイン機能
 gem 'devise'
@@ -90,7 +92,7 @@ gem 'devise'
 gem 'haml-rails'
 # gem "font-awesome-rails"
 # railsで宣言した変数をjavascriptで使えるようにする
-gem 'gon'
+# gem 'gon'
 
 # decorater追加
 #gem 'draper'
@@ -105,7 +107,7 @@ gem 'rails-i18n', '~> 5.1'
 # SNS認証
 gem "omniauth-rails_csrf_protection"
 # gem 'omniauth-facebook'
-gem 'omniauth-google-oauth2'
+# gem 'omniauth-google-oauth2'
 
 # クレジットカード登録
 # gem 'payjp'
