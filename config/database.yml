@@ -50,6 +50,7 @@ test:
 #
 production:
   <<: *default
+  adapter: postgresql
   database: aws_console_beta_production
   username: <%= Rails.application.credentials.db[:production][:username] %>
   password: <%= Rails.application.credentials.db[:production][:password] %>
