@@ -105,7 +105,7 @@ gem 'rails-i18n', '~> 5.1'
 # gem 'dotenv-rails'
 
 # SNS認証
-gem "omniauth-rails_csrf_protection"
+# gem "omniauth-rails_csrf_protection"
 # gem 'omniauth-facebook'
 # gem 'omniauth-google-oauth2'
 
