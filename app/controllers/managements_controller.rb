@@ -55,6 +55,7 @@ class ManagementsController < ApplicationController
                           "&SessionType=json&Session=" + 
                           CGI.escape(session_json)
 
+    require 'uri'
     returned_content = URI.parse(get_signin_token_url).read
     signin_token = JSON.parse(returned_content)['SigninToken']
     signin_token_param = "&SigninToken=" + CGI.escape(signin_token)
